@@ -14,10 +14,10 @@ class Quaternion {
 public:
 	Quaternion(){}
 	Quaternion(std::array<float, 3> vector3){
-		for(uint8_t n=0; n<3; n++){
+		for(uint8_t n=1; n<4; n++){
 			value[n] = vector3[n];
 		}
-		value[3] = 0;
+		value[0] = 0;
 	}
 	Quaternion(float val0, float val1, float val2, float val3){
 		value[0] = val0;
