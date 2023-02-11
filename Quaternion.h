@@ -9,6 +9,7 @@
 #define QUATERNION_QUATERNION_H_
 
 #include <array>
+#include <cmath>
 
 class Quaternion {
 public:
@@ -24,6 +25,19 @@ public:
 		value[1] = val1;
 		value[2] = val2;
 		value[3] = val3;
+	}
+
+	Quaternion normalize(){
+		float size = 0;
+		for(auto &it:value){
+			size += std::pow(it,2);
+		}
+		size = std::sqrt(size);
+
+		for(auto &it:value){
+			it /= size;
+		}
+		return *this;
 	}
 
 	Quaternion operator + (Quaternion obj){
