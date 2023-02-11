@@ -45,10 +45,19 @@ public:
 	}
 
 	Quaternion operator + (Quaternion &obj){
+        Quaternion tmp;
 		for(uint8_t n=0; n<4; n++){
-			this->value[n] += obj[n];
+			tmp[n] = value[n] + obj[n];
 		}
-		return *this;
+		return tmp;
+	}
+
+	Quaternion operator + (Quaternion obj){
+		Quaternion tmp;
+		for(uint8_t n=0; n<4; n++){
+			tmp[n] = value[n] + obj[n];
+		}
+		return tmp;
 	}
 
 	Quaternion operator*(Quaternion &obj){
@@ -59,25 +68,36 @@ public:
 				value[0]*obj[3]+value[1]*obj[2]-value[2]*obj[1]+value[3]*obj[0]);
 	}
 
-	Quaternion &operator*(float val){
-		for(auto &it:value){
-			it *= val;
+	Quaternion operator*(float val){
+        Quaternion tmp;
+		for(uint8_t n=0; n<4; n++){
+			tmp[n] = value[n] * val;
 		}
-		return *this;
+		return tmp;
 	}
 
-	Quaternion &operator-(Quaternion &obj){
+	Quaternion operator-(Quaternion &obj){
+        Quaternion tmp;
 		for(uint8_t n=0; n<4; n++){
-			this->value[n] -= obj[n];
+			tmp[n] = value[n] - obj[n];
 		}
-		return *this;
+		return tmp;
 	}
 
-	Quaternion &operator/(float val){
+	Quaternion operator-(Quaternion obj){
+        Quaternion tmp;
 		for(uint8_t n=0; n<4; n++){
-			this->value[n] /= val;
+			tmp[n] = value[n] - obj[n];
 		}
-		return *this;
+		return tmp;
+	}
+
+	Quaternion operator/(float val){
+        Quaternion tmp;
+		for(uint8_t n=0; n<4; n++){
+			tmp[n] = value[n] / val;
+		}
+		return tmp;
 	}
 
 	void operator*=(float val){
