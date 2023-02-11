@@ -34,21 +34,24 @@ public:
 		}
 		size = std::sqrt(size);
 
+		if(size == 0){
+			return Quaternion();
+		}
+
 		for(auto &it:value){
 			it /= size;
 		}
 		return *this;
 	}
 
-	Quaternion operator + (Quaternion obj){
-		Quaternion tmp;
+	Quaternion operator + (Quaternion &obj){
 		for(uint8_t n=0; n<4; n++){
-			tmp[n] = value[n] + obj[n];
+			this->value[n] += obj[n];
 		}
-		return tmp;
+		return *this;
 	}
 
-	Quaternion operator*(Quaternion obj){
+	Quaternion operator*(Quaternion &obj){
 		return Quaternion(
 				value[0]*obj[0]-value[1]*obj[1]-value[2]*obj[2]-value[3]*obj[3],
 				value[0]*obj[1]-value[1]* obj[0]+value[2]*obj[3]-value[3]*obj[2],
@@ -61,6 +64,26 @@ public:
 			it *= val;
 		}
 		return *this;
+	}
+
+	Quaternion &operator-(Quaternion &obj){
+		for(uint8_t n=0; n<4; n++){
+			this->value[n] -= obj[n];
+		}
+		return *this;
+	}
+
+	Quaternion &operator/(float val){
+		for(uint8_t n=0; n<4; n++){
+			this->value[n] /= val;
+		}
+		return *this;
+	}
+
+	void operator*=(float val){
+		for(auto &it:value){
+			it *= val;
+		}
 	}
 
 	float & operator [](int n) { return value[n]; }
