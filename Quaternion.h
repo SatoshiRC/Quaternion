@@ -10,6 +10,7 @@
 
 #include <array>
 #include <cmath>
+#include <stdint.h>
 
 template<typename T>
 class Quaternion {
