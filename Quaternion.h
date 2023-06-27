@@ -11,16 +11,17 @@
 #include <array>
 #include <cmath>
 
+template<typename T>
 class Quaternion {
 public:
 	Quaternion(){}
-	Quaternion(std::array<float, 3> vector3){
+	Quaternion(std::array<T, 3> vector3){
 		for(uint8_t n=1; n<4; n++){
 			value[n] = vector3[n];
 		}
 		value[0] = 0;
 	}
-	Quaternion(float val0, float val1, float val2, float val3){
+	Quaternion(T val0, T val1, T val2, T val3){
 		value[0] = val0;
 		value[1] = val1;
 		value[2] = val2;
@@ -28,7 +29,7 @@ public:
 	}
 
 	Quaternion normalize(){
-		float size = 0;
+		T size = 0;
 		for(auto &it:value){
 			size += std::pow(it,2);
 		}
@@ -68,7 +69,7 @@ public:
 				value[0]*obj[3]+value[1]*obj[2]-value[2]*obj[1]+value[3]*obj[0]);
 	}
 
-	Quaternion operator*(float val){
+	Quaternion operator*(T val){
         Quaternion tmp;
 		for(uint8_t n=0; n<4; n++){
 			tmp[n] = value[n] * val;
@@ -92,7 +93,7 @@ public:
 		return tmp;
 	}
 
-	Quaternion operator/(float val){
+	Quaternion operator/(T val){
         Quaternion tmp;
 		for(uint8_t n=0; n<4; n++){
 			tmp[n] = value[n] / val;
@@ -100,15 +101,15 @@ public:
 		return tmp;
 	}
 
-	void operator*=(float val){
+	void operator*=(T val){
 		for(auto &it:value){
 			it *= val;
 		}
 	}
 
-	float & operator [](int n) { return value[n]; }
+	T & operator [](int n) { return value[n]; }
 private:
-	std::array<float, 4> value;
+	std::array<T, 4> value;
 };
 
 #endif /* QUATERNION_QUATERNION_H_ */
