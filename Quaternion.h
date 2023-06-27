@@ -15,7 +15,9 @@
 template<typename T>
 class Quaternion {
 public:
-	Quaternion(){}
+	Quaternion(){
+		value[0] = 1;
+	}
 	Quaternion(std::array<T, 3> vector3){
 		for(uint8_t n=1; n<4; n++){
 			value[n] = vector3[n];
