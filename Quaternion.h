@@ -20,7 +20,7 @@ public:
 	}
 	Quaternion(std::array<T, 3> vector3){
 		for(uint8_t n=1; n<4; n++){
-			value[n] = vector3[n];
+			value[n] = vector3[n-1];
 		}
 		value[0] = 0;
 	}
