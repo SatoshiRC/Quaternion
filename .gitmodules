@@ -1,0 +1,3 @@
+[submodule "Vector3D"]
+	path = Vector3D
+	url = git@github.com:NOKOLat/Vector3D.git
