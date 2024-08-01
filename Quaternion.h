@@ -153,6 +153,16 @@ public:
 		return *this = *this * obj;
 	}
 
+	bool operator==(Quaternion obj){
+		for(uint8_t n=0; n<4; n++){
+			if(obj[n]!=value[n]){
+				return false;
+			}
+		}
+		return true;
+	}
+
+
 	T & operator [](int n) { return value[n]; }
 
 private:
