@@ -165,6 +165,15 @@ public:
 
 	T & operator [](int n) { return value[n]; }
 
+	std::string string(){
+	    	std::string res;
+	    	res += std::to_string(int16_t(value[0]*100))+", ";
+	    	res += std::to_string(int16_t(value[1]*100))+", ";
+	    	res += std::to_string(int16_t(value[2]*100))+", ";
+	    	res += std::to_string(int16_t(value[3]*100));
+	    	return res;
+	    }
+
 private:
 	std::array<T, 4> value;
 	T square(T arg){
