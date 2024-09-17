@@ -86,13 +86,13 @@ public:
 		return Quaternion<T>(value[0],-value[1],-value[2],-value[3]);
 	}
 
-	Quaternion operator + (Quaternion &obj){
-        Quaternion tmp;
-		for(uint8_t n=0; n<4; n++){
-			tmp[n] = value[n] + obj[n];
-		}
-		return tmp;
-	}
+//	Quaternion operator + (Quaternion &obj){
+//        Quaternion tmp;
+//		for(uint8_t n=0; n<4; n++){
+//			tmp[n] = value[n] + obj[n];
+//		}
+//		return tmp;
+//	}
 
 	Quaternion operator + (Quaternion obj){
 		Quaternion tmp;
