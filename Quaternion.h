@@ -40,6 +40,14 @@ public:
 		value[3] = val3;
 	}
 
+	Quaternion(std::array<std::array<T, 3>, 3> rotationMat){
+		value[0] = std::sqrt(rotationMat[0][0]+rotationMat[1][1]+rotationMat[2][2]+1)/2.0;
+		value[1] = std::sqrt(rotationMat[0][0]-rotationMat[1][1]-rotationMat[2][2]+1)/2.0;
+		value[2] = std::sqrt(-rotationMat[0][0]+rotationMat[1][1]-rotationMat[2][2]+1)/2.0;
+		value[3] = std::sqrt(-rotationMat[0][0]-rotationMat[1][1]+rotationMat[2][2]+1)/2.0;
+		value[0] = std::sqrt(rotationMat[0][0]+rotationMat[1][1]+rotationMat[2][2]+1)/2.0;
+	}
+
 	std::array<std::array<T, 3>, 3> rotationMat(){
 		std::array<std::array<T, 3>, 3> tmp;
 		
